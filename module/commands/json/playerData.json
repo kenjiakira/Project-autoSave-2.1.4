@@ -1,0 +1,65 @@
+{
+  "61561753304881": {
+    "name": "oie",
+    "health": 100,
+    "strength": 10,
+    "gold": 500,
+    "inventory": [],
+    "location": "Làng Khởi Đầu",
+    "quests": [
+      {
+        "id": "quest1",
+        "name": "Đạt 100 Sức Mạnh",
+        "isCompleted": false
+      }
+    ]
+  },
+  "100012456850890": {
+    "name": "concuto",
+    "health": 0,
+    "strength": 10,
+    "gold": 500,
+    "inventory": [],
+    "location": "Làng Khởi Đầu",
+    "quests": [
+      {
+        "id": "quest1",
+        "name": "Đạt 100 Sức Mạnh",
+        "isCompleted": false
+      }
+    ]
+  },
+  "undefined": {
+    "health": 100,
+    "strength": 10,
+    "gold": 500,
+    "inventory": [],
+    "location": "Làng Khởi Đầu",
+    "quests": [
+      {
+        "id": "quest1",
+        "name": "Đạt 100 Sức Mạnh",
+        "isCompleted": false
+      },
+      {
+        "id": "quest1",
+        "name": "Đạt 100 Sức Mạnh",
+        "isCompleted": false
+      }
+    ]
+  },
+  "100071639513410": {
+    "health": 100,
+    "strength": 45,
+    "gold": 493,
+    "inventory": [],
+    "location": "Làng Khởi Đầu",
+    "quests": [
+      {
+        "id": "quest1",
+        "name": "Đạt 100 Sức Mạnh",
+        "isCompleted": false
+      }
+    ]
+  }
+}

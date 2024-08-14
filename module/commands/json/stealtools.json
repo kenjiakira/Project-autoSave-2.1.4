@@ -1,0 +1,19 @@
+{
+  "tools": [
+    { "id": "tool_1",
+      "name": "Tua Vít",
+      "cost": 10000,
+      "successIncrease": 5
+    },
+    { "id": "tool_2",
+      "name": "Búa sắt",
+      "cost": 50000,
+      "successIncrease": 15
+    },
+    { "id": "tool_3",
+      "name": "Bộ mở khóa đa năng",
+      "cost": 100000,
+      "successIncrease": 30
+    }
+  ]
+}

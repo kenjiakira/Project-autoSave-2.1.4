@@ -1,0 +1,30 @@
+{
+  "quests": [
+    {
+      "id": "quest1",
+      "name": "Đạt 100 Sức Mạnh",
+      "description": "Đạt được 100 sức mạnh để hoàn thành nhiệm vụ này.",
+      "goal": {
+        "type": "strength",
+        "value": 100
+      },
+      "reward": {
+        "gold": 200
+      },
+      "nextQuestId": "quest2"
+    },
+    {
+      "id": "quest2",
+      "name": "Khám Phá 10 Khu Vực",
+      "description": "Khám phá 10 khu vực để hoàn thành nhiệm vụ này.",
+      "goal": {
+        "type": "explore",
+        "value": 10
+      },
+      "reward": {
+        "gold": 300
+      },
+      "nextQuestId": null
+    }
+  ]
+}

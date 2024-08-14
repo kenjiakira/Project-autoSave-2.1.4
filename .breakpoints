@@ -1,0 +1,36 @@
+{
+  "files": {
+    "module/commands/json/gemini.json": [
+      {
+        "id": "074ca255-aac7-4fe8-ae4c-877472af282d",
+        "line": 2,
+        "version": 1,
+        "index": 4
+      }
+    ],
+    "module/commands/lucky.js": [
+      {
+        "id": "7a1b30c2-4c23-4c0d-9822-22b286dd7571",
+        "line": 59,
+        "version": 1,
+        "index": 2356
+      }
+    ],
+    "module/commands/steal.js": [
+      {
+        "id": "07b4ffd7-1c85-45dd-a349-27b850df6235",
+        "line": 1,
+        "version": 1,
+        "index": 0
+      }
+    ],
+    "module/commands/tid.js": [
+      {
+        "id": "f63b0640-6694-40e1-9f31-d0b0885e3cf4",
+        "line": 24,
+        "version": 1,
+        "index": 744
+      }
+    ]
+  }
+}

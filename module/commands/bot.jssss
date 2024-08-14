@@ -1,0 +1,130 @@
+const axios = require("axios");
+const moment = require("moment-timezone");
+const fs = require("fs");
+const path = require("path");
+
+const openAIHistory = {};
+
+module.exports.config = {
+  name: "bot",
+  version: "1.0.7",
+  hasPermssion: 0,
+  credits: "Akira",
+  description: "Bản nâng cấp hơn so với GO𝐆𝐏𝐓\n𝐥𝐮̛ 𝐲́: cần nhập token để sử dụng",
+  commandCategory: "chatbot",
+  usePrefix: false,
+  usages: "\n\nCHAT VỚI GPT:\n\nSử dụng lệnh: .gpt [nội dung]\nThay [nội dung] bằng câu hỏi hoặc nội dung bạn muốn gửi cho GPT.\nBot sẽ trả lời bạn dựa trên nội dung bạn gửi.\n\nXÓA LỊCH SỬ CHAT GPT:\n\nSử dụng lệnh: .gpt clear\nBot sẽ xóa lịch sử chat của bạn với GPT.\n\nHIỂN THỊ LỊCH SỬ CHAT GPT:\n\nSử dụng lệnh: .gpt history\nBot sẽ hiển thị lịch sử chat của bạn với GPT.\n\nTIẾP TỤC CUỘC TRÒ CHUYỆN TRƯỚC ĐÓ:\n\nSử dụng lệnh: .gpt continue\nBot sẽ tiếp tục cuộc trò chuyện bạn đã có trước đó với GPT mà không cần phải gõ lại câu hỏi.",
+  cooldowns: 0,
+  dependencies: {}
+};
+
+function getApiKey() {
+  const apiPath = path.join(__dirname, '../../includes/handle/api.json');
+  const apiData = JSON.parse(fs.readFileSync(apiPath, 'utf8'));
+  return apiData.apiKey;
+}
+
+const apiKey = getApiKey();
+
+async function getUserName(api, senderID) {
+  try {
+    const userInfo = await api.getUserInfo(senderID);
+    return userInfo[senderID].name;
+  } catch (error) {
+    console.log(error);
+    return "User";
+  }
+}
+
+async function askGpt(conversation) {
+  const url = "https://api.openai.com/v1/chat/completions";
+  const response = await axios({
+    url,
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${apiKey}`,
+      "Content-Type": "application/json"
+    },
+    data: {
+      model: "gpt-3.5-turbo",
+      messages: conversation,
+      max_tokens: 2028,
+      temperature: 0.7
+    }
+  });
+  return response;
+}
+
+module.exports.run = async function ({ api, event, args, Users, Threads }) {
+  api.setMessageReaction("⏳", event.messageID, (err) => {}, true);
+  api.sendTypingIndicator(event.threadID, true);
+
+  const senderID = event.senderID;
+  const threadID = event.threadID;
+
+  const data = `User: ${args.join(" ")}`;
+
+  if (args.length < 1) {
+    api.sendMessage("Xin chào! Bạn cần tôi hỗ trợ gì không?", threadID);
+    api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+    return;
+  }
+
+  switch (args[0]) {
+    case "clear":
+      openAIHistory[senderID] = [];
+      api.sendMessage("Đã xóa lịch sử chat với bot GPT.", threadID);
+      break;
+    case "history":
+      const conversationHistory = openAIHistory[senderID];
+      if (conversationHistory && conversationHistory.length > 0) {
+        const formattedHistory = conversationHistory.map(
+          message => message.content
+        );
+        api.sendMessage(
+          `Lịch sử chat:\n${formattedHistory.join("\n")}`,
+          threadID
+        );
+      } else {
+        api.sendMessage("Lịch sử chat trống.", threadID);
+      }
+      break;
+    case "continue":
+      const lastMessage = openAIHistory[senderID]?.pop();
+      if (lastMessage) {
+        const response = await askGpt(openAIHistory[senderID]);
+        const message = response.data.choices[0].message.content;
+
+        openAIHistory[senderID].push(lastMessage); // Restore the last message
+        openAIHistory[senderID].push({ role: "assistant", content: message });
+
+        api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+        api.sendMessage(message, threadID, event.messageID);
+      } else {
+        api.sendMessage("Không tìm thấy tin nhắn trước để tiếp tục.", threadID);
+      }
+      break;
+    default:
+      openAIHistory[senderID] = openAIHistory[senderID] || [];
+      openAIHistory[senderID].push({ role: "user", content: data });
+
+      try {
+        const response = await askGpt(openAIHistory[senderID]);
+        const message = response.data.choices[0].message.content;
+
+        openAIHistory[senderID].push({ role: "assistant", content: message });
+
+        api.setMessageReaction("✅", event.messageID, (err) => {}, true);
+        api.sendMessage(message, threadID, event.messageID);
+      } catch (error) {
+        if (error.response) {
+          console.log(error.response.status);
+          console.log(error.response.data);
+        } else {
+          console.log(error.message);
+          api.sendMessage(error.message, threadID);
+        }
+      }
+      break;
+  }
+};

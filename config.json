@@ -1,0 +1,107 @@
+{
+  "language": "vi",
+  "DeveloperMode": true,
+  "autoCreateDB": true,
+  "allowInbox": false,
+  "autoClean": true,
+  "adminOnly": false,
+  "encryptSt": true,
+  "UPTIME": 200,
+  "commandDisabled": [],
+  "eventDisabled": [],
+  "EMAIL": "",
+  "PASSWORD": "",
+  "OTPKEY": "",
+  "BOTNAME": "AKI",
+  "PREFIX": ".",
+  "ADMINBOT": [
+    "100029043375434",
+    "61561753304881",
+    "100092325757607",
+    "61561753304881"
+  ],
+  "DESIGN": {
+    "Title": "BotPack mùa 5",
+    "Theme": "fiery",
+    "Admin": "Akira",
+    "Setup": {
+      "Title": "Design your own custom terminal Titlebar with a maximum of 8 characters for the title and must contain no numbers",
+      "Theme": "Effortlessly customize your console with a variety of theme colors, making it easier than ever to create your desired console look. Explore themes like Aqua, Fiery, Blue, Pink, Red, Retro, Sunlight, Teen, Summer, Flower, Ghost, and Hacker to enhance your terminal logs."
+    }
+  },
+  "APPSTATEPATH": "c3cstate.json",
+  "DEL_FUNCTION": false,
+  "ADD_FUNCTION": true,
+  "FCAOption": {
+    "forceLogin": true,
+    "listenEvents": true,
+    "autoMarkDelivery": false,
+    "autoMarkRead": false,
+    "pauseLog": true,
+    "logLevel": "silent",
+    "selfListen": true,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/600.3.18 (KHTML, like Gecko) Version/8.0.3 Safari/600.3.18"
+  },
+  "version": "1.2.6",
+  "daily": {
+    "rewardMin": 30,
+    "rewardMax": 200
+  },
+  "work": {
+    "cooldownTime": 1200000
+  },
+  "help": {
+    "autoUnsend": true,
+    "delayUnsend": 60
+  },
+  "adminUpdate": {
+    "autoUnsend": true,
+    "sendNoti": true,
+    "timeToUnsend": 10
+  },
+  "adminNoti": {
+    "autoUnsend": true,
+    "sendNoti": true,
+    "timeToUnsend": 10
+  },
+  "math": {
+    "WOLFRAM": "T8J8YV-H265UQ762K"
+  },
+  "sing": {
+    "YOUTUBE_API": "AIzaSyDAiwFBGnV6wbOe3UPY8h61vRzxSgxRa_g",
+    "SOUNDCLOUD_API": "M4TSyS6eV0AcMynXkA3qQASGcOFQTWub"
+  },
+  "video": {
+    "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+  },
+  "audio": {
+    "YOUTUBE_API": "AIzaSyDEE1-zZSRVI8lTaQOVsIAQFgL-_BJKvhk"
+  },
+  "menu": {
+    "autoUnsend": true,
+    "delayUnsend": 60
+  },
+  "tanthu": {
+    "rewardMin": 3000000,
+    "rewardMax": 5000000
+  },
+  "anti": {
+    "antinamebot": {
+      "status": true
+    }
+  },
+  "mine": {
+    "cooldownTime": 600000
+  },
+  "giftcode": {
+    "rewardMin": 3000000,
+    "rewardMax": 5000000
+  },
+  "weather": {
+    "OPEN_WEATHER": "1230a8fdc6457603234c68ead5f3f967"
+  },
+  "working": {
+    "cooldownTime": 1
+  },
+  "ndhOnly": false
+}
