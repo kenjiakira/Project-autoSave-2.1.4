@@ -3,10 +3,10 @@ const path = require('path');
 const { createCanvas } = require('canvas');
 const { Chart, registerables } = require('chart.js');
 
-Chart.register(...registerables);
+Chart.defaults.color = '#ffffff';
 
 const minCoinValue = 80;
-const maxCoinValue = 130;
+const maxCoinValue = 110;
 const cooldowns = new Map();
 const maxCoinsPerTransaction = 100000; 
 const maxCoinsBuyPerTransaction = 10000; 
