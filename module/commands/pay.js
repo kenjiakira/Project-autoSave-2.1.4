@@ -10,7 +10,7 @@ module.exports.config = {
   hasPermission: 0,
   credits: "Hoàng Ngọc Từ",
   description: "Chuyển tiền cho người khác",
-  commandCategory: "game",
+  commandCategory: "tài chính",
   usePrefix: true,
   usages: "Reply tin nhắn của người dùng + số tiền hoặc @mention + số tiền\n\nCú pháp:\n1. Reply tin nhắn của người dùng và gửi số tiền để chuyển tiền cho người đó.\n2. Hoặc mention người dùng trong lệnh và gửi số tiền để chuyển tiền cho họ.\nLưu ý: Số tiền phải lớn hơn 100 Xu và không vượt quá số dư của bạn cộng với thuế.",
   cooldowns: 0,

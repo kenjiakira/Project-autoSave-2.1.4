@@ -43,6 +43,16 @@ async function updateGroupName(threadID, api) {
     }
 }
 
+async function getUserName(api, userID) {
+    try {
+        const userInfo = await api.getUserInfo(userID);
+        return userInfo[userID].name;
+    } catch (error) {
+        console.error(error);
+        return "người dùng";
+    }
+}
+
 module.exports.config = {
     name: "noti",
     version: "2.0.0",
@@ -70,7 +80,8 @@ module.exports.run = async function({ event, api, args }) {
         return api.sendMessage("Vui lòng nhập nội dung tin nhắn hoặc trả lời một ảnh hoặc video để gửi.", threadID, messageID);
     }
 
-    const notificationMessage = `${messageContent || ""}`;
+    const adminName = await getUserName(api, senderID);
+    const notificationMessage = `📢 Thông báo từ Admin ${adminName}:\n${messageContent || ""}`;
 
     const filteredGroups = groups.filter(group => !bannedGroups.includes(group.threadID));
 

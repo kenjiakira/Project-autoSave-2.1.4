@@ -13,8 +13,8 @@ module.exports.config = {
   version: "1.1.1",
   hasPermission: 0,
   credits: "HNT",
-  description: "Trộm tiền ai đó hoặc mua công cụ trộm",
-  commandCategory: "Tài chính",
+  description: "Trộm tiền ai đó",
+  commandCategory: "game",
   usePrefix: true,
   usages: "steal [@mention] | steal bail | steal shop",
   cooldowns: 5

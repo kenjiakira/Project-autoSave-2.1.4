@@ -69,7 +69,7 @@ module.exports.config = {
   hasPermission: 0,
   credits: "Hoàng Ngọc Từ",
   description: "Đầu tư cổ phiếu kiếm xu",
-  commandCategory: "Finance",
+  commandCategory: "game",
   usePrefix: true,
   usages: `
     .trader [Mã cổ phiếu] [số tiền] | .trader stats [Mã cổ phiếu]

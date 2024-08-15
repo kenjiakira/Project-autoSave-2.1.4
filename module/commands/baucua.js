@@ -8,7 +8,7 @@ module.exports.config = {
   hasPermission: 0,
   credits: "Hoàng Ngọc Từ",
   description: "Chơi Bầu Cua",
-  commandCategory: "Giải trí",
+  commandCategory: "game",
   usePrefix: true,
   usages: "baucua <cược> <bầu/cua/cá/mèo/tôm/nai>\n\n" +
       "Hướng dẫn sử dụng:\n" +

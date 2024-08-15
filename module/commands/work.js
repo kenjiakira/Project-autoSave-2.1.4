@@ -6,7 +6,7 @@ module.exports.config = {
     hasPermission: 0,
     credits: "Hoàng Ngọc Từ",
     description: "Làm việc để kiếm xu.",
-    commandCategory: "Giải trí",
+    commandCategory: "game",
     usePrefix: true,
     usages: "[công việc]",
     cooldowns: 0

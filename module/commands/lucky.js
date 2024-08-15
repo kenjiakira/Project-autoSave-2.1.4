@@ -7,7 +7,7 @@ module.exports.config = {
     hasPermission: 2,
     credits: "HungCho",
     description: "Đoán con số may mắn từ 1 đến 5",
-    commandCategory: "mini game",
+    commandCategory: "game",
     usages: "\nGõ lệnh 'lucky' kèm theo số dự đoán của bạn từ 1 đến 5. Ví dụ: lucky 5.\nHệ thống sẽ tạo ra một con số may mắn từ 1 đến 5 ngẫu nhiên.Nếu số dự đoán của bạn khớp với số may mắn, bạn sẽ nhận được một khoản tiền thưởng và số tiền trong tài khoản của bạn sẽ được cộng thêm. Số tiền thưởng và số tiền cộng thêm sẽ được thông báo.Nếu số dự đoán của bạn không khớp với số may mắn, số tiền trong tài khoản của bạn sẽ bị trừ đi một khoản cược",
     usePrefix: true,
     cooldowns: 5,

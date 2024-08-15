@@ -165,6 +165,7 @@ const calculateInterest = (amount, hours) => {
     const interestRate = 0.001; 
     return amount * (interestRate * hours);
 };
+
 module.exports.run = async ({ api, event, args, Currencies, Users }) => {
     const { threadID, messageID, senderID } = event;
     const currentTime = moment().unix();

@@ -94,7 +94,7 @@ exports.config = {
   hasPermission: 0,
   credits: 'DC-Nam',
   description: 'chơi cờ vua',
-  commandCategory: 'Game',
+  commandCategory: 'game',
   usePrefix: true,
   usages: 'Sử Dụng Lệnh Cờ Vua\nKhởi tạo Trò Chơi:\n.chess [tag người chơi]\nVí dụ: .chess @JohnDoe\n\nDi Chuyển Quân Cờ:\n.chess [nước đi]\nVí dụ: e2e4\nBot sẽ:\nGửi thông báo về lượt và trạng thái trò chơi.\nThông báo kết quả trò chơi khi kết thúc (checkmate, hòa, v.v.).\nLưu ý: Đảm bảo nước đi đúng định dạng và tag đúng người chơi.',
   cooldowns: 3

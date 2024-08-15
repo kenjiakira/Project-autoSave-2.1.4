@@ -20,7 +20,7 @@ module.exports.config = {
   hasPermission: 2,
   credits: "HNT",
   description: "Trộm ngân hàng(EVENT)",
-  commandCategory: "Tài chính",
+  commandCategory: "game",
   usePrefix: true,
   usages: "bankrob",
   cooldowns: 5

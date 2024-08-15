@@ -167,7 +167,7 @@ module.exports.config = {
     hasPermission: 0,
     credits: "Hoàng Ngọc Từ",
     description: "Đào coin để kiếm xu",
-    commandCategory: "Kiếm Tiền",
+    commandCategory: "game",
     usePrefix: true,
     usages: `
         .coin - Xem biểu đồ giá trị coin trong 60 phút gần nhất và giá coin hiện tại.

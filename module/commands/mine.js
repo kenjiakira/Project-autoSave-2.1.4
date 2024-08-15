@@ -4,7 +4,7 @@ module.exports.config = {
     hasPermission: 0,
     credits: "Akira",
     description: "Khai thác tài nguyên Beta",
-    commandCategory: "kiếm tiền",
+    commandCategory: "game",
     usePrefix: true,
     update: true,
     cooldowns: 5,
