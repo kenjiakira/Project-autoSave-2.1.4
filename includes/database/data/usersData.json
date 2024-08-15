@@ -265,7 +265,7 @@
         "vanity": "100029043375434",
         "gender": 2,
         "isBirthday": false,
-        "money": 571379,
+        "money": 571480,
         "exp": 0,
         "createTime": {
             "timestamp": 1721407829312
@@ -518,7 +518,7 @@
         "vanity": "100092325757607",
         "gender": 1,
         "isBirthday": false,
-        "money": 28872,
+        "money": 24258,
         "exp": 0,
         "createTime": {
             "timestamp": 1721463351357
@@ -1596,7 +1596,7 @@
         "vanity": "wZeni2912",
         "gender": 2,
         "isBirthday": false,
-        "money": 2407505.53,
+        "money": 307505.5299999998,
         "exp": 0,
         "createTime": {
             "timestamp": 1721802392183
@@ -7766,7 +7766,7 @@
         "vanity": "nothingisfrvs",
         "gender": 2,
         "isBirthday": false,
-        "money": 2262.7999999523163,
+        "money": 388462.7999999523,
         "exp": 0,
         "createTime": {
             "timestamp": 1723123216926
@@ -7865,7 +7865,7 @@
         "vanity": "wchumeo",
         "gender": 1,
         "isBirthday": false,
-        "money": 5555,
+        "money": 11000,
         "exp": 0,
         "createTime": {
             "timestamp": 1723123217367
@@ -11396,7 +11396,7 @@
         "vanity": "100079951744222",
         "gender": 6,
         "isBirthday": false,
-        "money": 306037,
+        "money": 206037,
         "exp": 0,
         "createTime": {
             "timestamp": 1723367307515
@@ -13465,7 +13465,7 @@
         "vanity": "61551937277879",
         "gender": 2,
         "isBirthday": false,
-        "money": 5450,
+        "money": 9258,
         "exp": 0,
         "createTime": {
             "timestamp": 1723606964698
@@ -13475,7 +13475,7 @@
         },
         "lastUpdate": 1723606964698,
         "pay_limit_2024-08-14_61551937277879": 1,
-        "lastDailyClaim": 1723617164534
+        "lastDailyClaim": 1723684626819
     },
     "61552686211305": {
         "userID": "61552686211305",
