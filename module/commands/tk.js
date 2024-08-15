@@ -20,10 +20,10 @@ module.exports.config = {
   version: "1.0.0",
   hasPermission: 2,
   credits: "HNT",
-  description: "Thống kê kết quả khảo sát với kết quả chi tiết",
+  description: "Thống kê kết quả khảo sát với kết quả chi tiết và trực quan",
   commandCategory: "utilities",
   usePrefix: true,
-  usages: "thongkekhaosat - Thống kê kết quả khảo sát chi tiết",
+  usages: "thongkekhaosat - Thống kê kết quả khảo sát chi tiết và trực quan",
   cooldowns: 5
 };
 
@@ -52,7 +52,8 @@ module.exports.run = async ({ api, event }) => {
     // Format result
     let resultMessage = "===📊 THỐNG KÊ KẾT QUẢ KHẢO SÁT ===\n\n";
     surveyQuestions.forEach((question, index) => {
-      resultMessage += `${index + 1}. ${question}\n`;
+      resultMessage += `\n🔹 ${question}\n`;
+
       const stats = questionStats[index];
       stats.count.forEach((count, i) => {
         if (count > 0) { // Chỉ hiển thị các câu trả lời có số lượng lớn hơn 0
@@ -60,7 +61,8 @@ module.exports.run = async ({ api, event }) => {
           resultMessage += `  ${i + 1}: ${count} phản hồi (${percentage}%)\n`;
         }
       });
-      resultMessage += "\n";
+
+      resultMessage += "---------------------------------------";
     });
 
     api.sendMessage(resultMessage || "Không có dữ liệu để thống kê.", threadID, messageID);

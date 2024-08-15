@@ -8,7 +8,7 @@
     "openPrice": 100,
     "highPrice": 105,
     "lowPrice": 95,
-    "currentPrice": 8.21,
+    "currentPrice": 9.99,
     "previousClose": 100
   },
   {
@@ -20,7 +20,7 @@
     "openPrice": 150,
     "highPrice": 155,
     "lowPrice": 145,
-    "currentPrice": 13.83,
+    "currentPrice": 19.25,
     "previousClose": 150
   },
   {
@@ -32,7 +32,7 @@
     "openPrice": 200,
     "highPrice": 210,
     "lowPrice": 190,
-    "currentPrice": 35.41,
+    "currentPrice": 39.51,
     "previousClose": 200
   },
   {
@@ -44,7 +44,7 @@
     "openPrice": 250,
     "highPrice": 260,
     "lowPrice": 240,
-    "currentPrice": 154.11,
+    "currentPrice": 92.16,
     "previousClose": 250
   },
   {
@@ -56,7 +56,7 @@
     "openPrice": 300,
     "highPrice": 305,
     "lowPrice": 295,
-    "currentPrice": 63.5,
+    "currentPrice": 54.88,
     "previousClose": 300
   },
   {
@@ -68,7 +68,7 @@
     "openPrice": 350,
     "highPrice": 360,
     "lowPrice": 340,
-    "currentPrice": 7.29,
+    "currentPrice": 7.13,
     "previousClose": 350
   },
   {
@@ -80,7 +80,7 @@
     "openPrice": 400,
     "highPrice": 410,
     "lowPrice": 390,
-    "currentPrice": 36.94,
+    "currentPrice": 32.13,
     "previousClose": 400
   },
   {
@@ -92,7 +92,7 @@
     "openPrice": 450,
     "highPrice": 460,
     "lowPrice": 440,
-    "currentPrice": 143.83,
+    "currentPrice": 172.31,
     "previousClose": 450
   },
   {
@@ -104,7 +104,7 @@
     "openPrice": 500,
     "highPrice": 510,
     "lowPrice": 490,
-    "currentPrice": 10.69,
+    "currentPrice": 9.29,
     "previousClose": 500
   },
   {
@@ -116,7 +116,7 @@
     "openPrice": 550,
     "highPrice": 560,
     "lowPrice": 540,
-    "currentPrice": 54.26,
+    "currentPrice": 65.63,
     "previousClose": 550
   },
   {
@@ -128,7 +128,7 @@
     "openPrice": 600,
     "highPrice": 610,
     "lowPrice": 590,
-    "currentPrice": 193.96,
+    "currentPrice": 200.7,
     "previousClose": 600
   },
   {
@@ -140,7 +140,7 @@
     "openPrice": 650,
     "highPrice": 660,
     "lowPrice": 640,
-    "currentPrice": 10.9,
+    "currentPrice": 8.44,
     "previousClose": 650
   },
   {
@@ -152,7 +152,7 @@
     "openPrice": 700,
     "highPrice": 710,
     "lowPrice": 690,
-    "currentPrice": 29.26,
+    "currentPrice": 23.29,
     "previousClose": 700
   },
   {
@@ -164,7 +164,7 @@
     "openPrice": 750,
     "highPrice": 760,
     "lowPrice": 740,
-    "currentPrice": 130.46,
+    "currentPrice": 97.87,
     "previousClose": 750
   }
 ]
