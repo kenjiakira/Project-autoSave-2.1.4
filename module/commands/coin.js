@@ -6,9 +6,9 @@ const { Chart, registerables } = require('chart.js');
 Chart.register(...registerables);
 
 const minCoinValue = 80;
-const maxCoinValue = 180;
+const maxCoinValue = 130;
 const cooldowns = new Map();
-const maxCoinsPerTransaction = 1000; 
+const maxCoinsPerTransaction = 100000; 
 const maxCoinsBuyPerTransaction = 10000; 
 const transactionWaitTime = 1 * 60 * 1000;
 let coinValue = Math.floor(Math.random() * (maxCoinValue - minCoinValue + 1)) + minCoinValue;
