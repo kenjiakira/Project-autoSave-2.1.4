@@ -6,7 +6,7 @@ const { Chart, registerables } = require('chart.js');
 Chart.register(...registerables);
 
 const minCoinValue = 80;
-const maxCoinValue = 150;
+const maxCoinValue = 130;
 const cooldowns = new Map();
 const maxCoinsPerTransaction = 100000; 
 const maxCoinsBuyPerTransaction = 10000; 

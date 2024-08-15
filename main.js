@@ -21,23 +21,23 @@ global.client = new Object({
   getTime: function(option) {
     switch (option) {
       case "seconds":
-        return `${moment.tz("Asia/Manila").format("ss")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("ss")}`;
       case "minutes":
-        return `${moment.tz("Asia/Manila").format("mm")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("mm")}`;
       case "hours":
-        return `${moment.tz("Asia/Manila").format("HH")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("HH")}`;
       case "date":
-        return `${moment.tz("Asia/Manila").format("DD")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("DD")}`;
       case "month":
-        return `${moment.tz("Asia/Manila").format("MM")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("MM")}`;
       case "year":
-        return `${moment.tz("Asia/Manila").format("YYYY")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("YYYY")}`;
       case "fullHour":
-        return `${moment.tz("Asia/Manila").format("HH:mm:ss")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss")}`;
       case "fullYear":
-        return `${moment.tz("Asia/Manila").format("DD/MM/YYYY")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY")}`;
       case "fullTime":
-        return `${moment.tz("Asia/Manila").format("HH:mm:ss DD/MM/YYYY")}`;
+        return `${moment.tz("Asia/Ho_Chi_Minh").format("HH:mm:ss DD/MM/YYYY")}`;
     }
   },
   timeStart: Date.now()

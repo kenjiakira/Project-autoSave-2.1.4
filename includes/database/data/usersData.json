@@ -1596,7 +1596,7 @@
         "vanity": "wZeni2912",
         "gender": 2,
         "isBirthday": false,
-        "money": 2427695.53,
+        "money": 2608505.53,
         "exp": 0,
         "createTime": {
             "timestamp": 1721802392183
@@ -1608,7 +1608,7 @@
         "lastDailyClaim": 1723682939445,
         "pay_limit_2024-08-08_100000349406075": 1,
         "pay_limit_2024-08-09_100000349406075": 4,
-        "coins": 34737,
+        "coins": 34742,
         "pay_limit_2024-08-14_100000349406075": 10,
         "pay_limit_2024-08-15_100000349406075": 2
     },
@@ -4449,7 +4449,7 @@
         "vanity": "hieuhandsomesidekick",
         "gender": 2,
         "isBirthday": false,
-        "money": 1517,
+        "money": 1849,
         "exp": 0,
         "createTime": {
             "timestamp": 1722875016130
@@ -7865,7 +7865,7 @@
         "vanity": "wchumeo",
         "gender": 1,
         "isBirthday": false,
-        "money": 0,
+        "money": 5555,
         "exp": 0,
         "createTime": {
             "timestamp": 1723123217367
@@ -8747,7 +8747,7 @@
         "vanity": "100012456850890",
         "gender": 2,
         "isBirthday": false,
-        "money": 1100000.2,
+        "money": 0.20000000001164153,
         "exp": 0,
         "createTime": {
             "timestamp": 1723167303764
@@ -8758,7 +8758,7 @@
         "lastUpdate": 1723167303764,
         "lastDailyClaim": 1723607024969,
         "pay_limit_2024-08-09_100012456850890": 10,
-        "coins": 100039,
+        "coins": 110039,
         "pay_limit_2024-08-12_100012456850890": 1,
         "pay_limit_2024-08-14_100012456850890": 10,
         "pay_limit_2024-08-15_100012456850890": 2
@@ -11396,7 +11396,7 @@
         "vanity": "100079951744222",
         "gender": 6,
         "isBirthday": false,
-        "money": 25117,
+        "money": 28837,
         "exp": 0,
         "createTime": {
             "timestamp": 1723367307515
@@ -12201,7 +12201,7 @@
         "vanity": "tranngoctuongvyxinhgaii1",
         "gender": 1,
         "isBirthday": false,
-        "money": 6267,
+        "money": 4060,
         "exp": 0,
         "createTime": {
             "timestamp": 1723481422059
@@ -13465,7 +13465,7 @@
         "vanity": "61551937277879",
         "gender": 2,
         "isBirthday": false,
-        "money": 0,
+        "money": 4989,
         "exp": 0,
         "createTime": {
             "timestamp": 1723606964698
