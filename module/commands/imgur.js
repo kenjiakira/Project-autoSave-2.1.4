@@ -61,7 +61,6 @@ module.exports.run = async ({ api, event }) => {
 
             const imgurUrl = imgurResponse.data.data.link;
 
-            // In URL lên console
             console.log(`Ảnh đã được tải lên Imgur: ${imgurUrl}`);
 
             fs.unlinkSync(tempFilePath);

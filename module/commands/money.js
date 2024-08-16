@@ -41,20 +41,20 @@ async function createBalanceImage(userName, balance, userID) {
     ctx.drawImage(background, 0, 0, width, height);
 
     // Tải và vẽ avatar lên canvas
-    const avatarUrl = `https://graph.facebook.com/${userID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
-    const avatarResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-    const avatarBuffer = Buffer.from(avatarResponse.data);
-    const avatarImage = await circleImage(avatarBuffer);
-    const avatarImg = await loadImage(avatarImage);
-    const avatarSize = 150;
-    ctx.drawImage(avatarImg, 50, (height - avatarSize) / 2, avatarSize, avatarSize);
+   // const avatarUrl = `https://graph.facebook.com/${userID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
+    //const avatarResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
+    //const avatarBuffer = Buffer.from(avatarResponse.data);
+    //const avatarImage = await circleImage(avatarBuffer);
+   //// const avatarImg = await loadImage(avatarImage);
+    //const avatarSize = 150;
+   // ctx.drawImage(avatarImg, 50, (height - avatarSize) / 2, avatarSize, avatarSize);
 
     ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
     ctx.shadowBlur = 10;
     ctx.shadowOffsetX = 5;
     ctx.shadowOffsetY = 5;
 
-    ctx.font = "bold 40px Be Vietnam Pro";
+    ctx.font = "bold 35px Be Vietnam Pro";
     ctx.fillStyle = "#ffffff";
     const userNameUpper = userName.toUpperCase();
     const userNameText = userNameUpper;

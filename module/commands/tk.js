@@ -33,13 +33,11 @@ module.exports.run = async ({ api, event }) => {
   try {
     const data = await fs.readJson(dataFilePath, { default: {} });
 
-    // Initialize counters
     const questionStats = surveyQuestions.map(() => ({
       count: Array(5).fill(0),
       total: 0
     }));
 
-    // Count answers
     Object.values(data).forEach(answers => {
       answers.forEach((answer, index) => {
         if (answer) {
@@ -49,14 +47,13 @@ module.exports.run = async ({ api, event }) => {
       });
     });
 
-    // Format result
     let resultMessage = "===📊 THỐNG KÊ KẾT QUẢ KHẢO SÁT ===\n\n";
     surveyQuestions.forEach((question, index) => {
       resultMessage += `\n🔹 ${question}\n`;
 
       const stats = questionStats[index];
       stats.count.forEach((count, i) => {
-        if (count > 0) { // Chỉ hiển thị các câu trả lời có số lượng lớn hơn 0
+        if (count > 0) {
           const percentage = stats.total ? ((count / stats.total) * 100).toFixed(2) : 0;
           resultMessage += `  ${i + 1}: ${count} phản hồi (${percentage}%)\n`;
         }

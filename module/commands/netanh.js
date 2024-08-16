@@ -1,80 +1,77 @@
-const fs = require('fs-extra');
-const path = require('path');
-const sharp = require('sharp');
+const FormData = require('form-data');
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
-const config = {
+module.exports.config = {
   name: "netanh",
-  version: "1.0.0",
+  version: "1.0",
   hasPermission: 2,
-  credits: "Akira",
-  description: "Làm nét ảnh",
+  credits: "Mod HNT",
+  description: "Làm nét ảnh người thật.",
+  commandCategory: "tools",
   usePrefix: true,
-  commandCategory: "Hình ảnh",
-  usages: "[reply]",
-  update: true,
-  cooldowns: 0
+  usages: "netanh [reply image]",
+  cooldowns: 5,
+  dependencies: {}
 };
 
-const enhanceImageWithSharp = async (inputPath, outputPath) => {
+module.exports.run = async ({ api, event }) => {
+  const { threadID, messageID, messageReply } = event;
+
+  if (!messageReply || !messageReply.attachments || messageReply.attachments.length === 0) {
+    return api.sendMessage("⚠️ Không có hình ảnh được phản hồi", threadID, messageID);
+  }
+
+  const attachments = messageReply.attachments;
+  const imageAttachment = attachments[0];
+  if (!imageAttachment.url) {
+    return api.sendMessage("⚠️ Không tìm thấy đường dẫn hình ảnh", threadID, messageID);
+  }
+
   try {
-    const image = sharp(inputPath);
-    const metadata = await image.metadata();
+    const response = await axios.get(imageAttachment.url, { responseType: 'arraybuffer' });
+    const buffer = Buffer.from(response.data, 'binary');
+    const filename = path.join(__dirname, 'cache', 'abc.jpg');
+    fs.writeFileSync(filename, buffer);
 
-    await image
-      .resize({
-        width: Math.round(metadata.width * 2), 
-        height: Math.round(metadata.height * 2),
-        fit: 'contain',
-        kernel: 'lanczos3' 
-      })
-      .sharpen()  
-      .toFile(outputPath);
+    const form = new FormData();
+    form.append('file', fs.createReadStream(filename));
 
-    console.log('Ảnh đã được nâng cao độ phân giải và lưu vào:', outputPath);
-  } catch (error) {
-    console.error('Lỗi khi nâng cao độ phân giải ảnh:', error);
-    throw error;
-  }
-};
+    const headers = {
+      'Content-Type': `multipart/form-data; boundary=${form.getBoundary()}`,
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br, zstd',
+      'Accept-Language': 'en-US,en;q=0.9,vi;q=0.8',
+      'Origin': 'https://taoanhdep.com',
+      'Sec-Fetch-Dest': 'empty',
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Site': 'same-origin',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36'
+    };
 
-const run = async function({ api, event, handleReply }) {
-  const { threadID, messageID, senderID } = event;
+    const response2 = await axios.post('https://taoanhdep.com/public/net-anh-nguoi-2.php', form, {
+      headers: headers
+    });
 
-  if (event.messageReply && event.messageReply.attachments && event.messageReply.attachments.length > 0) {
-    const attachment = event.messageReply.attachments[0];
+    console.log(`API Response: ${response2.status} ${response2.statusText}`);
+    console.log(`API Response Data: ${response2.data}`);
 
-    if (attachment.type === 'photo') {
-      const imageURL = attachment.url;
-      const imagePath = path.resolve(__dirname, 'cache', `original-${senderID}.jpg`);
-      const outputPath = path.resolve(__dirname, 'cache', `enhanced-${senderID}.jpg`);
-
-      try {
-       
-        const response = await axios.get(imageURL, { responseType: 'arraybuffer' });
-        fs.writeFileSync(imagePath, Buffer.from(response.data, 'binary'));
-
-        await enhanceImageWithSharp(imagePath, outputPath);
-
-       
-        api.sendMessage({
-          body: 'Đây là ảnh đã được nâng cao độ phân giải:',
-          attachment: fs.createReadStream(outputPath)
-        }, threadID, async () => {
-        
-          fs.unlinkSync(imagePath);
-          fs.unlinkSync(outputPath);
-        }, messageID);
-      } catch (error) {
-        console.error('Lỗi khi xử lý ảnh:', error);
-        api.sendMessage('⚠️ Đã xảy ra lỗi khi nâng cao độ phân giải ảnh. Vui lòng thử lại sau.', threadID, messageID);
-      }
-    } else {
-      api.sendMessage('❯ Vui lòng reply một bức ảnh.', threadID, messageID);
+    const imageUrl = response2.data;
+    if (!imageUrl) {
+      return api.sendMessage("⚠️ Không thể làm nét ảnh", threadID, messageID);
     }
-  } else {
-    api.sendMessage('❯ Vui lòng reply một bức ảnh.', threadID, messageID);
+
+    const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+    const outputFilename = path.join(__dirname, 'cache', 'xyz.jpg');
+    fs.writeFileSync(outputFilename, imageResponse.data);
+
+    api.sendMessage({
+      body: 'Làm nét thành công!',
+      attachment: fs.createReadStream(outputFilename)
+    }, threadID, messageID);
+  } catch (error) {
+    console.error(error);
+    return api.sendMessage("⚠️ Có lỗi xảy ra", threadID, messageID);
   }
 };
-
-module.exports = { config, run };

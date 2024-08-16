@@ -3,7 +3,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const axios = require('axios');
 
-const API_KEY = "AIzaSyC8wE4cn_OKDgZdHp1VQ4FDDgiMeT9z914";
+const API_KEY = "AIzaSyBKQ2MDvwfT88_JSJwYxnIew1O6OpB0v9Y";
 const conversationHistory = {};
 const jsonFilePath = path.resolve(__dirname, 'json', 'gemini.json');
 
@@ -29,45 +29,41 @@ const saveDataToFile = async () => {
 readDataFromFile();
 
 const cooldowns = {};
-
 const COOLDOWN_TIME = 10000;
-module.exports = {
-  config: {
-    name: "gemini",
-    version: "1.0.0",
-    hasPermission: 0,
-    credits: "HNT",
-    description: "Tạo văn bản và phân tích hình ảnh bằng Gemini",
-    usePrefix: true,
-    commandCategory: "general",
-    usages: "[prompt] - Nhập một prompt để tạo nội dung văn bản và phân tích ảnh (nếu có).",
-    cooldowns: 0,
-    dependencies: {
-      "@google/generative-ai": "",
-      "fs-extra": "",
-      "axios": ""
-    }
-  },
 
-  run: async function({ api, event, args }) {
-    const { threadID, messageID, senderID, messageReply } = event;
+module.exports.config = {
+  name: "gemini",
+  version: "1.0.0",
+  hasPermission: 0,
+  credits: "HNT",
+  description: "Tạo văn bản và phân tích hình ảnh bằng Gemini",
+  commandCategory: "general",
+  usages: "[prompt] - Nhập một prompt để tạo nội dung văn bản và phân tích ảnh (nếu có).",
+  cooldowns: 0,
+  usePrefix: true,
+  dependencies: {
+    "@google/generative-ai": "",
+    "fs-extra": "",
+    "axios": ""
+  }
+};
+module.exports.handleEvent = async ({ event, api, Users, Threads }) => {
+  const { threadID, senderID, body } = event;
 
-    const prompt = args.join(" ");
+  if (senderID === api.getCurrentUserID()) return;
 
-    if (!prompt) {
-      return api.sendMessage("Vui lòng nhập một prompt.", threadID, messageID);
-    }
+  let threadData = global.data.threadData.get(threadID) || {};
+  if (typeof threadData["gemini"] === "undefined" || threadData["gemini"] === false) return;
 
-    const now = Date.now();
-    if (cooldowns[senderID] && now - cooldowns[senderID] < COOLDOWN_TIME) {
-      const timeLeft = Math.ceil((COOLDOWN_TIME - (now - cooldowns[senderID])) / 1000);
-      return api.sendMessage(`Bạn phải chờ thêm ${timeLeft} giây trước khi gửi lệnh tiếp theo.`, threadID, messageID);
-    }
+  const now = Date.now();
+  if (cooldowns[senderID] && now - cooldowns[senderID] < COOLDOWN_TIME) return;
 
-    cooldowns[senderID] = now;
+  cooldowns[senderID] = now;
 
+  if (body) {
+    const prompt = body;
+    
     try {
-
       if (!Array.isArray(conversationHistory[senderID])) {
         conversationHistory[senderID] = [];
       }
@@ -80,59 +76,34 @@ module.exports = {
       const genAI = new GoogleGenerativeAI(API_KEY);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
-      let imageParts = [];
-
-      // Xử lý ảnh đính kèm (nếu có)
-      if (messageReply && messageReply.attachments && messageReply.attachments.length > 0) {
-        const attachments = messageReply.attachments.filter(att => att.type === 'photo');
-
-        for (const attachment of attachments) {
-          const fileUrl = attachment.url;
-          const tempFilePath = path.join(__dirname, 'cache', `temp_image_${Date.now()}.jpg`);
-
-          const response = await axios({
-            url: fileUrl,
-            responseType: 'stream'
-          });
-
-          const writer = fs.createWriteStream(tempFilePath);
-          response.data.pipe(writer);
-
-          await new Promise((resolve, reject) => {
-            writer.on('finish', resolve);
-            writer.on('error', reject);
-          });
-
-          // Chuyển đổi hình ảnh thành dữ liệu nội tuyến
-          const fileData = fs.readFileSync(tempFilePath);
-          const base64Image = Buffer.from(fileData).toString('base64');
-
-          imageParts.push({
-            inlineData: {
-              data: base64Image,
-              mimeType: 'image/jpeg'
-            }
-          });
-
-          fs.unlinkSync(tempFilePath);
-        }
-      }
-
-      const result = await model.generateContent([{ text: fullPrompt }, ...imageParts]);
-
+      const result = await model.generateContent([{ text: fullPrompt }]);
       const response = await result.response;
       const text = await response.text();
 
-      conversationHistory[senderID].push(`Bot: ${text}`);
+      conversationHistory[senderID].push(`${text}`);
 
       await saveDataToFile();
 
-      // Reply lại tin nhắn gốc
-      return api.sendMessage(text, threadID, messageID);
-
+      return api.sendMessage(text, threadID);
     } catch (error) {
       console.error("Lỗi khi tạo nội dung:", error);
-      return api.sendMessage("Nội Dung bị chặn do yêu cầu an toàn.", threadID, messageID);
+      return api.sendMessage("", threadID);
     }
   }
+};
+
+module.exports.run = async ({ api, event, Threads, getText }) => {
+  const { threadID, messageID } = event;
+  let data = (await Threads.getData(threadID)).data;
+
+  if (typeof data["gemini"] === "undefined" || data["gemini"] === false) {
+    data["gemini"] = true;
+  } else {
+    data["gemini"] = false;
+  }
+
+  await Threads.setData(threadID, { data });
+  global.data.threadData.set(threadID, data);
+
+  return api.sendMessage(`Tính năng tự động trả lời Gemini đã ${(data["gemini"] === true) ? "bật" : "tắt"} thành công!`, threadID, messageID);
 };

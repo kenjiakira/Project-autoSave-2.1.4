@@ -94,7 +94,7 @@ module.exports.run = async ({ event, api, Currencies }) => {
   updateStockPrices();
 
   if (args.length === 1 && args[0].toLowerCase() === '.trader') {
-    // Xử lý hiển thị danh sách cơ hội đầu tư
+   
     const investmentOpportunities = readInvestmentOpportunities();
     const list = investmentOpportunities.map(op => 
       `- ${op.name}: ${op.fullName}\nGiá mở cửa: ${op.openPrice} xu\nGiá thấp nhất: ${op.lowPrice} xu\nGiá hiện tại: ${op.currentPrice} xu\nRủi ro ${op.risk * 100}%\nLợi nhuận ${op.return}x`
@@ -110,7 +110,7 @@ module.exports.run = async ({ event, api, Currencies }) => {
   }
 
   if (args.length === 3 && args[1].toLowerCase() === 'stats') {
-    // Xử lý hiển thị thống kê cổ phiếu
+    
     const abbreviation = args[2].toUpperCase();
     const opportunity = findOpportunityByAbbreviation(abbreviation);
 

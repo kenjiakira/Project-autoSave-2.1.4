@@ -67,7 +67,7 @@ module.exports.run = async function({ api, event, Currencies, args }) {
     return api.sendMessage("Vui lòng nhập mã gift code.", threadID, messageID);
   }
 
-  const giftCode = args.join(" ").trim(); // Chấp nhận mã gift code có khoảng trắng
+  const giftCode = args.join(" ").trim(); 
   const giftData = readOrCreateGiftData();
   const validGiftCodes = readValidGiftCodes();
 
