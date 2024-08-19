@@ -32,7 +32,6 @@ module.exports.run = async function({ api, event, Users }) {
     const username = user.name;
     const formattedBalance = formatNumber(user.money);
     
-    // Chỉ thêm danh hiệu cho top 1, 2, 3
     let title = '';
     if (rank === 1) title = " - Người đứng đầu🥇";
     else if (rank === 2) title = " - Nhà đầu tư bạc🥈";

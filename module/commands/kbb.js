@@ -5,7 +5,7 @@ const config = {
   credits: "Akira",
   description: "Chơi trò kéo búa bao",
   usePrefix: true,
-  commandCategory: "Trò chơi",
+  commandCategory: "game",
   usages: "**Hướng dẫn cách chơi:**\n1. Gửi lệnh với một trong các tùy chọn: kéo, búa, bao.\n2. Bot sẽ chọn ngẫu nhiên một trong các tùy chọn này và hiển thị kết quả.\n3. Nếu bạn thắng, bạn sẽ nhận được 100 xu. Hòa không có phần thưởng xu.",
   cooldowns: 10
 };

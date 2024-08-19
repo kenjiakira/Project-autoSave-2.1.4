@@ -11,7 +11,7 @@ module.exports.config = {
   hasPermission: 0,
   credits: "HNT",
   description: "Mini game",
-  commandCategory: "Mini Game",
+  commandCategory: "game",
   usePrefix: true,
   usages: "Sử dụng: .slot [cược]",
   cooldowns: 10

@@ -135,10 +135,8 @@ const createBankInfoImage = async (userName, uid, amount) => {
     ctx.textBaseline = 'top';
     ctx.fillText('', width / 2, 20);
 
-    // In hoa toàn bộ tên người dùng
     const formattedUserName = userName.toUpperCase();
 
-    // Tên người dùng
     ctx.font = 'bold 57px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(`${formattedUserName}`, width / 2, 268);
@@ -150,11 +148,9 @@ const createBankInfoImage = async (userName, uid, amount) => {
     ctx.font = '26px Arial';
     ctx.fillText(`${formatUID(uid)}`, 277, 699);
     ctx.font = 'bold 48px Arial';
-    ctx.fillText(`${formatCurrency(amount)} xu`, 60, 730);  // Sử dụng formatCurrency
-
-    // Lưu ảnh với chất lượng cao
+    ctx.fillText(`${formatCurrency(amount)} xu`, 60, 730);  
     const imagePath = path.join(cacheDir, 'bank_info.png');
-    const buffer = canvas.toBuffer('image/png', { compressionLevel: 0 }); // Đặt compressionLevel = 0 để giữ chất lượng cao
+    const buffer = canvas.toBuffer('image/png', { compressionLevel: 0 }); 
     fs.writeFileSync(imagePath, buffer);
 
     return imagePath;
@@ -165,6 +161,7 @@ const calculateInterest = (amount, hours) => {
     const interestRate = 0.001; 
     return amount * (interestRate * hours);
 };
+
 module.exports.run = async ({ api, event, args, Currencies, Users }) => {
     const { threadID, messageID, senderID } = event;
     const currentTime = moment().unix();

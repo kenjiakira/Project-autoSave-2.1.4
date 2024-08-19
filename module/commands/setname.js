@@ -11,7 +11,7 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, event, args }) {
-  // Kiểm tra nếu có đủ đối số
+
   if (args.length < 2) {
     return api.sendMessage("Vui lòng nhập đầy đủ thông tin. Cú pháp: setname [tất cả | @user] [biệt danh]", event.threadID);
   }

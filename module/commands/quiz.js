@@ -8,7 +8,7 @@ module.exports.config = {
   credits: "Hoàng Ngọc Từ",
   description: "câu hỏi vui",
   usePrefix: true,
-  commandCategory: "Giải trí",
+  commandCategory: "game",
   usages: "quiz",
   cooldowns: 5
 };

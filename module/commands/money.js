@@ -28,7 +28,7 @@ async function getUserName(api, userID) {
   }
 }
 
-async function createBalanceImage(userName, balance) {
+async function createBalanceImage(userName, balance, userID) {
   const width = 800;
   const height = 200;
   const canvas = createCanvas(width, height);
@@ -40,22 +40,21 @@ async function createBalanceImage(userName, balance) {
     const background = await loadImage(backgroundImagePath);
     ctx.drawImage(background, 0, 0, width, height);
 
-    // Chúng ta không vẽ avatar nữa, nên bỏ đoạn code này
-
-    // const avatarUrl = `https://graph.facebook.com/${userID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
-    // const avatarResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
-    // const avatarBuffer = Buffer.from(avatarResponse.data);
-    // const avatar = await circleImage(avatarBuffer);
-    // const avatarImage = await loadImage(avatar);
-    // const avatarSize = 150;
-    // ctx.drawImage(avatarImage, 50, (height - avatarSize) / 2, avatarSize, avatarSize);
+    // Tải và vẽ avatar lên canvas
+   // const avatarUrl = `https://graph.facebook.com/${userID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`;
+    //const avatarResponse = await axios.get(avatarUrl, { responseType: 'arraybuffer' });
+    //const avatarBuffer = Buffer.from(avatarResponse.data);
+    //const avatarImage = await circleImage(avatarBuffer);
+   //// const avatarImg = await loadImage(avatarImage);
+    //const avatarSize = 150;
+   // ctx.drawImage(avatarImg, 50, (height - avatarSize) / 2, avatarSize, avatarSize);
 
     ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
     ctx.shadowBlur = 10;
     ctx.shadowOffsetX = 5;
     ctx.shadowOffsetY = 5;
 
-    ctx.font = "bold 40px Be Vietnam Pro";
+    ctx.font = "bold 35px Be Vietnam Pro";
     ctx.fillStyle = "#ffffff";
     const userNameUpper = userName.toUpperCase();
     const userNameText = userNameUpper;
@@ -112,7 +111,7 @@ module.exports.run = async function ({ api, event, args, Currencies }) {
     const formattedBalance = formatNumber(balance);
     const userName = await getUserName(api, userID);
 
-    const imagePath = await createBalanceImage(userName, formattedBalance);
+    const imagePath = await createBalanceImage(userName, formattedBalance, userID);
 
     return api.sendMessage({
       attachment: fs.createReadStream(imagePath)

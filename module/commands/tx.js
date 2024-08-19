@@ -115,7 +115,6 @@ module.exports.run = async function ({ api, event, args, Currencies, Users }) {
       taxRate = 0.01;
     }
 
-    // Xử lý kết quả cho các trường hợp đặc biệt 3 hoặc 18 điểm
     if (totalDice === 3) {
       if (choose === 'xỉu') {
         result = 'thắng';

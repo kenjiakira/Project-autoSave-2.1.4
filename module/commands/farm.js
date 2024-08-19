@@ -21,7 +21,7 @@ module.exports.config = {
     hasPermission: 2,
     credits: "Hoàng Ngọc Từ",
     description: "Trồng cây để kiếm xu(đang update)",
-    commandCategory: "Kiếm Tiền",
+    commandCategory: "game",
     usePrefix: true,
     cooldowns: 0,
     update: true

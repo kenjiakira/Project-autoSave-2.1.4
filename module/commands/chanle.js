@@ -1,10 +1,10 @@
 module.exports.config = {
     name: "chanle",
-    version: "1.1.4",
+    version: "1.1.5",
     hasPermission: 0,
     credits: "Hoàng Ngọc Từ",
     description: "Chơi chẵn lẻ",
-    commandCategory: "Giải trí",
+    commandCategory: "game",
     usePrefix: true,
     usages: "[chẵn | lẻ] [số xu]",
     cooldowns: 5,
@@ -98,15 +98,19 @@ module.exports.run = async ({ api, event, args, Currencies, Users }) => {
     const userName = userData.name;
 
     if (win) {
-        response += `${userName} đã thắng ${winAmount} xu!`;
+        response += `${userName} đã thắng ${formatCurrency(winAmount)} xu!`;
         await Currencies.increaseMoney(senderID, winAmount);
     } else {
-        response += `${userName} đã thua ${betAmount} xu.`;
+        response += `${userName} đã thua ${formatCurrency(betAmount)} xu.`;
         await Currencies.decreaseMoney(senderID, betAmount);
     }
 
     const userNewBalance = (await Currencies.getData(senderID)).money;
-    response += `\nSố dư hiện tại của bạn là ${userNewBalance} xu.`;
+    response += `\nSố dư hiện tại của bạn là ${formatCurrency(userNewBalance)} xu.`;
 
     return api.sendMessage(response, threadID, messageID);
 };
+
+function formatCurrency(number) {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').replace(/\.00$/, '');
+}
